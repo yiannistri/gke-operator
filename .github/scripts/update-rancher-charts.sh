@@ -18,6 +18,8 @@ else
     CHARTS_DIR="${GITHUB_WORKSPACE}/charts"
 fi
 
+echo $CHARTS_DIR && pwd
+
 pushd "${CHARTS_DIR}" > /dev/null
 
 if [ ! -e ~/.gitconfig ]; then
