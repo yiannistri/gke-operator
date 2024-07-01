@@ -49,8 +49,8 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 0
-          repository: rancher/charts
-          ref: ${{github.event.inputs.charts_ref}}
+          repository: ${{ github.repository_owner }}/charts
+          ref: ${{ github.event.inputs.charts_ref }}
           path: charts
       - name: Set env variables
         run: |

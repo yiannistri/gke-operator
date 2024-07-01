@@ -22,6 +22,8 @@ echo $CHARTS_DIR && pwd
 
 pushd "${CHARTS_DIR}" > /dev/null
 
+echo $CHARTS_DIR && pwd
+
 if [ ! -e ~/.gitconfig ]; then
     git config --global user.name "highlander-ci-bot"
     git config --global user.email highlander-ci@proton.me
