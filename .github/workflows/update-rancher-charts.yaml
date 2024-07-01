@@ -53,12 +53,15 @@ jobs:
           ref: ${{github.event.inputs.charts_ref}}
           path: charts
       - name: Set timestamp
-        run: echo "TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+        run: |
+          echo "TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+          CHARTS_REF=${{ github.event.inputs.charts_ref }}
+          echo "VERSION=${CHARTS_REF: -4}" >> $GITHUB_ENV
       - name: Extract version from charts ref
         working-directory: charts
         run: |
-          CHARTS_REF=${{ github.event.inputs.charts_ref }}
-          echo "VERSION=${CHARTS_REF: -4}" >> $GITHUB_ENV
+          echo $VERSION
+          echo $TIMESTAMP
           git checkout -b ${{ env.OPERATOR }}-$VERSION-$TIMESTAMP
           git status
       # - name: Run release script
